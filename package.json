@@ -1,0 +1,43 @@
+{
+  "name": "profile-raudlatul-hikmah",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "axios": "^1.18.1",
+    "file-saver": "^2.0.5",
+    "html5-qrcode": "^2.3.8",
+    "jszip": "^3.10.1",
+    "lucide-react": "^1.25.0",
+    "motion": "^12.42.2",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.7",
+    "react-barcode": "^1.6.1",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1",
+    "sonner": "^2.0.7",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/babel__core": "^7.20.5",
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^24.13.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}
