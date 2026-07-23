@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -41,7 +41,7 @@ api.interceptors.request.use(async (config) => {
 export function getStorageUrl(path: string | null): string | null {
   if (!path) return null;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
-  const base = import.meta.env.VITE_STORAGE_URL || "http://localhost:8000/storage";
+  const base = import.meta.env.VITE_STORAGE_URL;
   return `${base}/${path}`;
 }
 
