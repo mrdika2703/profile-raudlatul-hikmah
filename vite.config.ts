@@ -13,7 +13,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://bcknd-raudlatulhikmah.whdk.web.id',
+        // target: 'http://localhost:8000',
         changeOrigin: true,
         headers: {
           Accept: 'application/json',
