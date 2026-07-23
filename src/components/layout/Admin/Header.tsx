@@ -1,12 +1,18 @@
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
+
+interface HeaderProps {
+  setIsSidebarOpen: (isOpen: boolean) => void;
+  menuItems: { name: string; path: string }[];
+  user: { name: string };
+  isActive: (path: string) => boolean;
+}
 
 export default function Header({
-  isSidebarOpen,
   setIsSidebarOpen,
   menuItems,
   user,
   isActive,
-}: any) {
+}: HeaderProps) {
   return (
     <>
       {/* Top Bar (Mobile Menu Trigger & Greetings) */}

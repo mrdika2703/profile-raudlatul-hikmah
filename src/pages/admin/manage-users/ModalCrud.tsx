@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type ChangeEvent, useEffect } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 import { X, Loader2, Upload } from "lucide-react";
 import type { UserFormData } from "./Index";
 import { getStorageUrl } from "../../../lib/axios";
@@ -116,7 +116,9 @@ export default function ModalCrud({
         </button>
 
         <h2 className="text-xl font-bold text-pink-700 mb-1">
-          {modalMode === "create" ? "Tambah Akun Staff / User" : "Edit Akun Staff / User"}
+          {modalMode === "create"
+            ? "Tambah Akun Staff / User"
+            : "Edit Akun Staff / User"}
         </h2>
         <p className="text-xs text-slate-500 mb-6">
           Isi detail data staff dan atur hak akses sistem.
@@ -160,7 +162,8 @@ export default function ModalCrud({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                Password {modalMode === "create" ? "*" : "(Kosongkan jika tidak diubah)"}
+                Password{" "}
+                {modalMode === "create" ? "*" : "(Kosongkan jika tidak diubah)"}
               </label>
               <input
                 type="password"
@@ -254,7 +257,10 @@ export default function ModalCrud({
                   />
                 ) : existingImages.photo ? (
                   <img
-                    src={getStorageUrl(existingImages.photo) || "/default/user-icon.webp"}
+                    src={
+                      getStorageUrl(existingImages.photo) ||
+                      "/default/user-icon.webp"
+                    }
                     alt="Existing"
                     className="w-full h-full object-cover"
                   />

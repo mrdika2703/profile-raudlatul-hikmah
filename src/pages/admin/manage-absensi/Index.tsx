@@ -42,7 +42,9 @@ export default function ManageAbsensi() {
   const [kelasList, setKelasList] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [filterDate, setFilterDate] = useState(
-    new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0],
+    new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0],
   );
   const [filterKelas, setFilterKelas] = useState("Semua Kelas");
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,7 +57,9 @@ export default function ManageAbsensi() {
 
   const [formData, setFormData] = useState({
     siswa_id: "",
-    absen_date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16),
+    absen_date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 16),
     status: "Hadir" as "Hadir" | "Izin" | "Sakit" | "Alpa",
     keterangan: "",
   });
@@ -163,21 +167,16 @@ export default function ManageAbsensi() {
   const showSuccess = (msg: string) => toast.success(msg);
   const showError = (msg: string) => toast.error(msg);
 
-  const getKelasName = (kelas: any) => {
-    if (!kelas) return "";
-    if (typeof kelas === "object") {
-      return kelas.kelas ? `Kelas ${kelas.kelas}` : "";
-    }
-    return String(kelas).startsWith("Kelas")
-      ? String(kelas)
-      : `Kelas ${kelas}`;
-  };
-
   const activeKelasList = kelasList.filter((k) => k.status === "Aktif");
   const daftarKelas = [
     { id: "Semua Kelas", display: "Semua Kelas" },
     ...activeKelasList.map((k) => {
-      const displaySemester = k.semester === "Ganjil" ? "1" : k.semester === "Genap" ? "2" : k.semester;
+      const displaySemester =
+        k.semester === "Ganjil"
+          ? "1"
+          : k.semester === "Genap"
+            ? "2"
+            : k.semester;
       return {
         id: k.id.toString(),
         display: `Kelas ${k.kelas} ${k.tahun_ajaran} - ${displaySemester}`,

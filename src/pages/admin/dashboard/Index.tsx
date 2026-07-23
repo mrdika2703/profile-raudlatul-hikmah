@@ -11,7 +11,6 @@ import {
   Activity,
   History,
   Loader2,
-  Calendar,
 } from "lucide-react";
 import api from "../../../lib/axios";
 
@@ -135,7 +134,9 @@ export default function Dashboard() {
             Scan QR Code Kehadiran Siswa
           </h2>
           <p className="text-pink-100 text-sm mt-2 leading-relaxed">
-            Pindai kartu QR Code milik siswa untuk melakukan absensi otomatis tanpa repot mengetik data. Klik tombol di samping untuk langsung membuka kamera scanner.
+            Pindai kartu QR Code milik siswa untuk melakukan absensi otomatis
+            tanpa repot mengetik data. Klik tombol di samping untuk langsung
+            membuka kamera scanner.
           </p>
         </div>
         <Link
@@ -187,7 +188,11 @@ export default function Dashboard() {
                   Kehadiran Hari Ini
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Statistik absensi tanggal {new Date().toLocaleDateString("id-ID", { day: "numeric", month: "long" })}
+                  Statistik absensi tanggal{" "}
+                  {new Date().toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                  })}
                 </p>
               </div>
               <Activity className="text-pink-600" size={20} />
@@ -268,7 +273,8 @@ export default function Dashboard() {
                         Kelas {k.kelas}
                       </span>
                       <span className="text-[10px] text-slate-400 font-medium">
-                        Tahun Ajaran {k.tahun_ajaran} | Sem. {k.semester === "Ganjil" ? "1" : "2"}
+                        Tahun Ajaran {k.tahun_ajaran} | Sem.{" "}
+                        {k.semester === "Ganjil" ? "1" : "2"}
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5 font-extrabold text-xs bg-pink-50 border border-pink-100 text-pink-600 px-3 py-1.5 rounded-lg shadow-2xs">
@@ -340,7 +346,10 @@ export default function Dashboard() {
                         {log.keterangan}
                       </p>
                       <span className="text-[10px] text-slate-400 mt-0.5">
-                        Oleh: <span className="font-semibold text-slate-500">{log.user_name}</span>
+                        Oleh:{" "}
+                        <span className="font-semibold text-slate-500">
+                          {log.user_name}
+                        </span>
                       </span>
                     </div>
                   </div>

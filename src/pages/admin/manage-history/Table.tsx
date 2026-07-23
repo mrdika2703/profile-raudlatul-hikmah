@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Loader2, ChevronLeft, ChevronRight, Clock, User } from "lucide-react";
+import { Loader2, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import type { HistoryData } from "./Index";
 
 const PER_PAGE = 20;

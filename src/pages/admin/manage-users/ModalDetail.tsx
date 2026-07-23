@@ -1,4 +1,4 @@
-import { X, Mail, MapPin, Briefcase, Tag, FileText } from "lucide-react";
+import { X, MapPin, Briefcase, Tag, FileText } from "lucide-react";
 import type { User } from "./Index";
 import { getStorageUrl } from "../../../lib/axios";
 
@@ -41,7 +41,9 @@ export default function ModalDetail({
               }}
             />
           </div>
-          <h2 className="text-xl font-bold text-slate-800">{selectedUser.name}</h2>
+          <h2 className="text-xl font-bold text-slate-800">
+            {selectedUser.name}
+          </h2>
           <span className="text-xs font-semibold text-slate-400 font-mono mt-0.5">
             {selectedUser.email}
           </span>

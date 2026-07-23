@@ -78,7 +78,6 @@ export default function AdminLayout() {
       {/* Area Konten Utama */}
       <div className="flex-1 md:ml-64 flex flex-col min-w-0">
         <Header
-          isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
           menuItems={menuItems}
           user={user}

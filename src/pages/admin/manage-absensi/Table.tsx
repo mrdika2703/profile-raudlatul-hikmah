@@ -10,13 +10,6 @@ import ModalDelete from "../../../components/layout/Admin/ModalDelete";
 
 const PER_PAGE = 20;
 
-const getKelasStr = (kelas: any) => {
-  if (!kelas) return "-";
-  if (typeof kelas === "object")
-    return kelas.kelas ? `Kelas ${kelas.kelas}` : "-";
-  return String(kelas);
-};
-
 interface TableProps {
   loading: boolean;
   filteredAbsensis: any[];

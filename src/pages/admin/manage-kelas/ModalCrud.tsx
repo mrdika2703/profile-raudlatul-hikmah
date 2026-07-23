@@ -1,4 +1,4 @@
-import { useState, type FormEvent, useEffect } from "react";
+import { useState, type FormEvent } from "react";
 import { X, Loader2 } from "lucide-react";
 
 interface ModalCrudProps {
@@ -140,7 +140,10 @@ export default function ModalCrud({
             <select
               value={formData.status}
               onChange={(e) =>
-                setFormData({ ...formData, status: e.target.value as "Aktif" | "Lulus" })
+                setFormData({
+                  ...formData,
+                  status: e.target.value as "Aktif" | "Lulus",
+                })
               }
               className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-pink-500 font-medium"
             >
@@ -163,9 +166,7 @@ export default function ModalCrud({
               disabled={formSubmitting}
               className="px-6 py-2.5 bg-pink-600 hover:bg-pink-700 text-white text-sm font-bold rounded-xl shadow-md shadow-pink-200 flex items-center gap-2 transition-all disabled:opacity-50"
             >
-              {formSubmitting && (
-                <Loader2 size={16} className="animate-spin" />
-              )}
+              {formSubmitting && <Loader2 size={16} className="animate-spin" />}
               <span>
                 {modalMode === "create" ? "Simpan Data" : "Update Data"}
               </span>

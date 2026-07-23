@@ -16,10 +16,15 @@ export default function CameraScan({
   isCameraOpen,
   api,
   fetchAbsensis,
+}: {
+  setIsCameraOpen: (open: boolean) => void;
+  isCameraOpen: boolean;
+  api: any;
+  fetchAbsensis: () => void;
 }) {
   // State Scanner & Alert Overlay
   const [scanAlert, setScanAlert] = useState<ScanAlert | null>(null);
-  const [isProcessingScan, setIsProcessingScan] = useState(false);
+  const [, setIsProcessingScan] = useState(false);
   const html5QrCodeRef = useRef<Html5Qrcode | null>(null);
 
   // --- 1. LOGIKA KAMERA LANGSUNG (TANPA TOMBOL BAWAAN) ---
@@ -80,7 +85,9 @@ export default function CameraScan({
 
   const playBeep = (type: "success" | "error") => {
     try {
-      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioCtx = new (
+        window.AudioContext || (window as any).webkitAudioContext
+      )();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
 
@@ -91,9 +98,15 @@ export default function CameraScan({
         // Nada bip tinggi ganda untuk sukses
         osc.type = "sine";
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(
+          1200,
+          audioCtx.currentTime + 0.15,
+        );
         gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+        gain.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioCtx.currentTime + 0.2,
+        );
         osc.start(audioCtx.currentTime);
         osc.stop(audioCtx.currentTime + 0.2);
       } else {
@@ -101,7 +114,10 @@ export default function CameraScan({
         osc.type = "triangle";
         osc.frequency.setValueAtTime(150, audioCtx.currentTime);
         gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        gain.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioCtx.currentTime + 0.3,
+        );
         osc.start(audioCtx.currentTime);
         osc.stop(audioCtx.currentTime + 0.3);
       }

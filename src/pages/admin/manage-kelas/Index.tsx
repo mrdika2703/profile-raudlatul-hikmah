@@ -89,26 +89,13 @@ export default function ManageKelas() {
     setIsModalOpen(true);
   };
 
-  const handleToggleStatus = async (kelas: Kelas) => {
-    try {
-      const response = await api.patch(`/kelas/${kelas.id}/status`);
-      toast.success(response.data.message || "Status kelas berhasil diperbarui!");
-      // Update local state
-      setKelasList((prev) =>
-        prev.map((k) => (k.id === kelas.id ? response.data.data : k))
-      );
-    } catch (error) {
-      toast.error("Gagal mengubah status kelas.");
-    }
-  };
-
   const handleNaikKelas = async (kelas: Kelas) => {
     try {
       const response = await api.post(`/kelas/${kelas.id}/naik-kelas`);
       toast.success(response.data.message || "Kelas berhasil naik kelas!");
       // Update local state
       setKelasList((prev) =>
-        prev.map((k) => (k.id === kelas.id ? response.data.data : k))
+        prev.map((k) => (k.id === kelas.id ? response.data.data : k)),
       );
     } catch (error) {
       toast.error("Gagal menaikkan semester/tahun ajaran kelas.");
