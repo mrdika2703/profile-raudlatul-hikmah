@@ -40,7 +40,7 @@ export default function Sidebar({
             </div>
             <div>
               <span className="font-bold text-lg text-pink-700 block leading-none">
-                TK Raudlatul
+                Raudlatul Hikmah
               </span>
               <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
                 Admin Portal

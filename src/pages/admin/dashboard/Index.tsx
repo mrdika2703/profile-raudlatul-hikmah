@@ -6,11 +6,12 @@ import {
   UserRoundPlus,
   BookOpen,
   QrCode,
-  ArrowUpRight,
+  // ArrowUpRight,
   TrendingUp,
   Activity,
   History,
   Loader2,
+  NotebookPen,
 } from "lucide-react";
 import api from "../../../lib/axios";
 
@@ -128,29 +129,38 @@ export default function Dashboard() {
       <div className="bg-gradient-to-r from-pink-600 via-pink-500 to-purple-600 rounded-3xl p-6 sm:p-10 text-white shadow-xl shadow-pink-200 flex flex-col lg:flex-row justify-between items-center gap-6">
         <div className="max-w-xl text-center lg:text-left">
           <span className="bg-white/20 text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-            ⚡ Presensi Cepat QR Code
+            Presensi Cepat QR Code
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black mt-3 leading-tight">
-            Scan QR Code Kehadiran Siswa
+          <h2 className="text-2xl font-black mt-3 leading-tight">
+            Scan QR Code Absensi Siswa
           </h2>
           <p className="text-pink-100 text-sm mt-2 leading-relaxed">
             Pindai kartu QR Code milik siswa untuk melakukan absensi otomatis
-            tanpa repot mengetik data. Klik tombol di samping untuk langsung
-            membuka kamera scanner.
+            tanpa repot mengetik data.
           </p>
         </div>
-        <Link
-          to="/admin/absen?scan=true"
-          className="w-full lg:w-auto px-8 py-5 bg-white text-pink-600 hover:bg-pink-50 active:bg-pink-100 rounded-2xl font-black text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 shrink-0 transform hover:-translate-y-0.5"
-        >
-          <QrCode size={24} className="text-pink-600 animate-pulse" />
-          <span>Buka Kamera Absensi</span>
-          <ArrowUpRight size={16} className="text-pink-400" />
-        </Link>
+        <div className="flex w-full flex-col gap-4 md:items-end">
+          <Link
+            to="/admin/absen?scan=true"
+            className="px-10 py-5 bg-white text-pink-600 hover:bg-pink-50 active:bg-pink-100 rounded-2xl font-black text-base shadow-lg hover:shadow-xl transition-all flex justify-center gap-3 shrink-0 transform hover:-translate-y-0.5"
+          >
+            <QrCode size={24} className="text-pink-600 animate-pulse" />
+            <span>Kamera Absensi</span>
+            {/* <ArrowUpRight size={16} className="text-pink-400" /> */}
+          </Link>
+          <Link
+            to="/admin/rapor"
+            className="px-10 py-5 bg-white text-pink-600 hover:bg-pink-50 active:bg-pink-100 rounded-2xl font-black text-base shadow-lg hover:shadow-xl transition-all flex justify-center gap-3 shrink-0 transform hover:-translate-y-0.5"
+          >
+            <NotebookPen size={24} className="text-pink-600 animate-pulse" />
+            <span>Rapor Siswa</span>
+            {/* <ArrowUpRight size={16} className="text-pink-400" /> */}
+          </Link>
+        </div>
       </div>
 
       {/* 2. STATS CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat, i) => {
           const Icon = stat.icon;
           return (

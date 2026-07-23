@@ -67,11 +67,9 @@ export default function Login() {
           <div className="w-16 h-16 bg-pink-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4 shadow-lg shadow-pink-200">
             <GraduationCap size={36} />
           </div>
-          <h1 className="text-2xl font-bold text-pink-700">
-            Portal Admin & Guru
-          </h1>
+          <h1 className="text-2xl font-bold text-pink-700">Login Guru</h1>
           <p className="text-sm text-slate-500 mt-1">
-            TK Raudlatul Hikmah — Silakan login untuk mengelola data
+            RA Raudlatul Hikmah, Silakan login untuk mengelola data
           </p>
         </div>
 
@@ -144,7 +142,8 @@ export default function Login() {
 
         {/* Footer info kecil */}
         <p className="text-center text-xs text-slate-400 mt-8">
-          Lupa kata sandi? Hubungi Kepala Sekolah atau Administrator sistem.
+          KB RA Raudatul Hikmah Dsn. Juwet, Ds. Dukuhdimoro, Kec. Mojoagung,
+          Jombang
         </p>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { Menu } from "lucide-react";
 interface HeaderProps {
   setIsSidebarOpen: (isOpen: boolean) => void;
   menuItems: { name: string; path: string }[];
-  user: { name: string };
+  user: { name: string; position: string };
   isActive: (path: string) => boolean;
 }
 
@@ -30,7 +30,9 @@ export default function Header({
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-600 px-3 py-1.5">{user.name}</span>
+          <span className="text-sm text-gray-600 px-3 py-1.5">
+            {user.position}
+          </span>
         </div>
       </header>
     </>
