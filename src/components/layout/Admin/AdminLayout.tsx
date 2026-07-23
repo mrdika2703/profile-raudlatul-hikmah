@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
+import api from "../../../lib/axios";
 import {
   LayoutDashboard,
   Users,
@@ -20,6 +21,46 @@ export default function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Idle Auto-Logout logic (15 menit = 900000 ms)
+  const IDLE_TIMEOUT = 15 * 60 * 1000;
+  useEffect(() => {
+    let timer: any;
+
+    const resetTimer = () => {
+      clearTimeout(timer);
+      timer = setTimeout(handleIdleLogout, IDLE_TIMEOUT);
+    };
+
+    const handleIdleLogout = async () => {
+      try {
+        await api.post("/logout");
+      } catch (error) {
+        console.error("Gagal logout dari server (idle):", error);
+      } finally {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/admin");
+      }
+    };
+
+    // Daftarkan event listener aktivitas user
+    const events = ["mousedown", "mousemove", "keypress", "scroll", "touchstart"];
+    events.forEach((event) => {
+      window.addEventListener(event, resetTimer);
+    });
+
+    // Inisialisasi timer pertama kali
+    resetTimer();
+
+    // Cleanup
+    return () => {
+      clearTimeout(timer);
+      events.forEach((event) => {
+        window.removeEventListener(event, resetTimer);
+      });
+    };
+  }, [navigate]);
 
   // Mengambil data user yang disimpan saat login
   const userData = localStorage.getItem("user");

@@ -37,6 +37,22 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
+// Interceptor: Tangkap error token/auth tidak valid (401 Unauthorized) dan redirect ke login
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // Kecuali rute /login (agar validasi gagal di halaman login tetap terproses)
+      if (!error.config.url?.endsWith("/login")) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "/admin";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 // Helper: URL storage file dari backend
 export function getStorageUrl(path: string | null): string | null {
   if (!path) return null;
